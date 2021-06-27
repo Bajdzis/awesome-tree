@@ -37,9 +37,27 @@ describe('WordsInfo', () => {
         expect(new WordsInfo('WORD').getMatchedTextCases()).toEqual(['upperSnakeCase', 'upperKebabCase']);
     });
 
-    it('should compare instacne', () => {
+    it('should compare instance', () => {
         const someWords = new WordsInfo('SomeWords');
         const helloWorld = new WordsInfo('HelloWorld');
+
+        expect(someWords.isSameTextCase(helloWorld)).toEqual(true);
+        expect(someWords.isSameNumberOfPart(helloWorld)).toEqual(true);
+        expect(someWords.isSimilarly(helloWorld)).toEqual(true);
+    });
+
+    it('should compare instance', () => {
+        const someWords = new WordsInfo('SomeWords');
+        const helloWorld = new WordsInfo('hello_world');
+
+        expect(someWords.isSameTextCase(helloWorld)).toEqual(false);
+        expect(someWords.isSameNumberOfPart(helloWorld)).toEqual(true);
+        expect(someWords.isSimilarly(helloWorld)).toEqual(false);
+    });
+
+    it('should compare letter disk instance', () => {
+        const someWords = new WordsInfo('C:');
+        const helloWorld = new WordsInfo('C:');
 
         expect(someWords.isSameTextCase(helloWorld)).toEqual(true);
         expect(someWords.isSameNumberOfPart(helloWorld)).toEqual(true);

@@ -40,8 +40,12 @@ export class PathInfo {
         return instanceToCompare.getParts().length === this.getParts().length;
     }
 
-    isSimilarWords(){
-
+    isSimilarWords(instanceToCompare: PathInfo){
+        if(!this.isSameNumberOfParts(instanceToCompare)) {
+            return false;
+        }
+        const partsToCompare = instanceToCompare.getParts();
+        return this.parts.every((part, index) => part.isSimilarly(partsToCompare[index]));
     }
 
 }

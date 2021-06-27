@@ -71,8 +71,15 @@ export class WordsInfo {
     }
 
     isSameTextCase(instanceToCompare: WordsInfo){
-        return WordsInfo.CASE_METHODS.some(functionName => {
-            return instanceToCompare[functionName]() === true && this[functionName]() === true;
+        const thisTextCase = this.getMatchedTextCases();
+        const compareTextCase = instanceToCompare.getMatchedTextCases();
+
+        if (thisTextCase.length === 0 && compareTextCase.length === 0) {
+            return true;
+        }
+
+        return thisTextCase.some(functionName => {
+            return compareTextCase.includes(functionName);
         });
     }
 

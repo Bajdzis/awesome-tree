@@ -18,10 +18,22 @@ const paths = {
         unix: '/home/documents/someOtherFile.ts',
         windows: 'C:\\home\\documents\\someOtherFile.ts'
     },
+    someAwesomeFile: {
+        unix: '/home/documents/someAwesomeFile.ts',
+        windows: 'C:\\home\\documents\\someAwesomeFile.ts'
+    },
+    someOtherFileSnakeCase: {
+        unix: '/home/documents/some_other_file.ts',
+        windows: 'C:\\home\\documents\\some_other_file.ts'
+    },
+    someOtherFilePascalCase: {
+        unix: '/home/documents/SomeOtherFile.ts',
+        windows: 'C:\\home\\documents\\SomeOtherFile.ts'
+    },
 } as const;
 
 
-describe('WordsInfo', () => {
+describe('PathInfo', () => {
     (['unix', 'windows'] as const).map((style) => {
 
         describe(`${style} style`, () => {
@@ -47,6 +59,12 @@ describe('WordsInfo', () => {
                 expect(someOther.getParts()).toHaveLength(style === 'unix' ? 4 : 5);
                 expect(someFirst.isSameNumberOfParts(someOther)).toEqual(true);
             });
+            it('should find similar paths', () => {
+                const someOther = new PathInfo(paths.someOtherFile[style]);
+                const someAwesome = new PathInfo(paths.someAwesomeFile[style]);
+
+                expect(someAwesome.isSimilarWords(someOther)).toEqual(true);
+            });
 
             it('should have correct extension', () => {
                 const txtFile = new PathInfo(paths.someFileInDocument[style]);
@@ -56,6 +74,15 @@ describe('WordsInfo', () => {
                 expect(txtFile.getExtension()).toEqual('txt');
                 expect(typeScriptFile.getExtension()).toEqual('ts');
                 expect(directory.getExtension()).toEqual('/DIRECTORY/');
+            });
+
+            it('should find not similar paths', () => {
+                const someOther = new PathInfo(paths.someOtherFile[style]);
+                const someOtherPascalCase = new PathInfo(paths.someOtherFilePascalCase[style]);
+                const someOtherSnakeCase = new PathInfo(paths.someOtherFileSnakeCase[style]);
+
+                expect(someOther.isSimilarWords(someOtherPascalCase)).toEqual(false);
+                expect(someOther.isSimilarWords(someOtherSnakeCase)).toEqual(false);
             });
 
         });
