@@ -59,13 +59,6 @@ describe('PathInfo', () => {
                 expect(someOther.getParts()).toHaveLength(style === 'unix' ? 4 : 5);
                 expect(someFirst.isSameNumberOfParts(someOther)).toEqual(true);
             });
-            it('should find similar paths', () => {
-                const someOther = new PathInfo(paths.someOtherFile[style]);
-                const someAwesome = new PathInfo(paths.someAwesomeFile[style]);
-
-                expect(someAwesome.isSimilarWords(someOther)).toEqual(true);
-            });
-
             it('should have correct extension', () => {
                 const txtFile = new PathInfo(paths.someFileInDocument[style]);
                 const typeScriptFile = new PathInfo(paths.someFirst[style]);
@@ -76,6 +69,13 @@ describe('PathInfo', () => {
                 expect(directory.getExtension()).toEqual('/DIRECTORY/');
             });
 
+            it('should find similar paths', () => {
+                const someOther = new PathInfo(paths.someOtherFile[style]);
+                const someAwesome = new PathInfo(paths.someAwesomeFile[style]);
+
+                expect(someAwesome.isSimilarWords(someOther)).toEqual(true);
+            });
+
             it('should find not similar paths', () => {
                 const someOther = new PathInfo(paths.someOtherFile[style]);
                 const someOtherPascalCase = new PathInfo(paths.someOtherFilePascalCase[style]);
@@ -83,6 +83,23 @@ describe('PathInfo', () => {
 
                 expect(someOther.isSimilarWords(someOtherPascalCase)).toEqual(false);
                 expect(someOther.isSimilarWords(someOtherSnakeCase)).toEqual(false);
+            });
+
+            it('should find all similar paths', () => {
+                const someOther = new PathInfo(paths.someOtherFile[style]);
+                const someAwesome = new PathInfo(paths.someAwesomeFile[style]);
+                const someOtherPascalCase = new PathInfo(paths.someOtherFilePascalCase[style]);
+                const someOtherSnakeCase = new PathInfo(paths.someOtherFileSnakeCase[style]);
+
+                const result = someOther.getOnlySimilarPath([
+                    someAwesome,
+                    someOtherPascalCase,
+                    someOtherSnakeCase
+                ]);
+
+                expect(result).toContain(someAwesome);
+                expect(result).not.toContain(someOtherPascalCase);
+                expect(result).not.toContain(someOtherSnakeCase);
             });
 
         });
