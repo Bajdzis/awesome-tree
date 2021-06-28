@@ -34,6 +34,66 @@ export class WordsInfo {
         this.parts = inSnakeCase.split('_');
     }
 
+    mergeWords(base: WordsInfo){
+        const diff = base.getDiff(this);
+
+        return base.replaceParts(diff);
+    }
+
+    getDiff(toCompare: WordsInfo){
+        const parts = this.getParts();
+        const toCompareParts = toCompare.getParts();
+
+        let numberSameWordsFromStart = 0;
+        let numberSameWordsFromEnd = 0;
+
+        for (let i = 0; i < parts.length; i++) {
+            if(toCompareParts[i] === parts[i]){
+                numberSameWordsFromStart = i+1;
+            } else {
+                break;
+            }
+        }
+        for (let i = 1; i < parts.length; i++) {
+            if(toCompareParts[toCompareParts.length - i] === parts[parts.length - i]){
+                numberSameWordsFromEnd = i;
+            } else {
+                break;
+            }
+        }
+
+        const from = parts.slice(numberSameWordsFromStart, parts.length - numberSameWordsFromEnd);
+        const to = toCompareParts.slice(numberSameWordsFromStart, toCompareParts.length - numberSameWordsFromEnd);
+
+        const diff: {[key:string]:string} = {};
+        if(from.length !== 1 || to.length !== 1){
+            diff[from.join('_')] = to.join('_');
+        }
+        if(from.length === to.length){
+            from.forEach((value, index) => {
+                diff[value] = to[index];
+            });
+        }
+        return diff;
+    }
+
+    replaceParts(diff: {[key:string]:string}){
+        const [textCase] = this.getMatchedTextCases();
+
+        if (!textCase) {
+            return new WordsInfo(this.getWords());
+        }
+
+        let asSnakeCase = this.getWords('snakeCase');
+        const fromKeys = Object.keys(diff).sort((a,b) => a.length - b.length);
+        const newValue = fromKeys.reduce((current, key) => {
+            return current.replace(new RegExp(key,'g'), diff[key]);
+        },asSnakeCase);
+        const wordsInBaseTextCase = WordsInfo.textCaseToFormatter[textCase](newValue);
+        return new WordsInfo(wordsInBaseTextCase);
+
+    }
+
     getWords(format: TextCase = 'other') {
         return  WordsInfo.textCaseToFormatter[format](this.words);
     }
@@ -87,8 +147,18 @@ export class WordsInfo {
         return instanceToCompare.getParts().length === this.getParts().length;
     }
 
+    isSameParts(instanceToCompare: WordsInfo){
+        const parts = this.getParts();
+        const partsToCompare = instanceToCompare.getParts();
+        return partsToCompare.length === parts.length && parts.every((part, index) => part === partsToCompare[index]);
+    }
+
     isSimilarly(instanceToCompare: WordsInfo) {
         return this.isSameNumberOfPart(instanceToCompare) && this.isSameTextCase(instanceToCompare);
+    }
+
+    isSame(instanceToCompare: WordsInfo) {
+        return this.isSameTextCase(instanceToCompare) && this.isSameParts(instanceToCompare);
     }
 
     getMatchedTextCases(): TextCase[] {

@@ -64,4 +64,70 @@ describe('WordsInfo', () => {
         expect(someWords.isSimilarly(helloWorld)).toEqual(true);
     });
 
+    it('should merge words', () => {
+
+        const awesomeWords = new WordsInfo('AwesomeTextInPascalCase');
+        const someWords = new WordsInfo('some_text_in_sneak_case');
+
+        const someBase = awesomeWords.mergeWords(someWords);
+        const awesomeBase = someWords.mergeWords(awesomeWords);
+
+        expect(someBase.getWords()).toEqual('awesome_text_in_pascal_case');
+        expect(awesomeBase.getWords()).toEqual('SomeTextInSneakCase');
+    });
+
+    it('should get diff form same number of words', () => {
+        const oldComponent = new WordsInfo('oldComponent');
+        const newElement = new WordsInfo('newElement');
+
+        expect(oldComponent.getDiff(newElement)).toEqual({
+            'old_component' : 'new_element',
+            'old': 'new',
+            'component': 'element'
+        });
+    });
+
+    it('should diff omit same words on end', () => {
+        const oldComponent = new WordsInfo('oldComponent');
+        const newComponent = new WordsInfo('newComponent');
+
+        expect(oldComponent.getDiff(newComponent)).toEqual({
+            'old' : 'new'
+        });
+    });
+
+    it('should diff omit same words on start', () => {
+        const oldComponent = new WordsInfo('ComponentOld');
+        const newComponent = new WordsInfo('ComponentNew');
+
+        expect(oldComponent.getDiff(newComponent)).toEqual({
+            'old' : 'new'
+        });
+    });
+
+    it('should diff working with other number of word', () => {
+        const oldComponent = new WordsInfo('ComponentOldIsAwesome');
+        const newComponent = new WordsInfo('ComponentNew');
+        const awesomeView = new WordsInfo('AwesomeViewNew');
+
+        expect(oldComponent.getDiff(newComponent)).toEqual({
+            'old_is_awesome' : 'new'
+        });
+        expect(awesomeView.getDiff(newComponent)).toEqual({
+            'awesome_view' : 'component'
+        });
+    });
+
+    it('should merge words use replace parts method', () => {
+
+        const awesomeWords = new WordsInfo('AwesomeTextInPascalCase');
+        const someWords = new WordsInfo('some_text_in_sneak_case');
+
+        const diff = awesomeWords.getDiff(someWords);
+        const diff2 = someWords.getDiff(awesomeWords);
+
+        expect(awesomeWords.replaceParts(diff)).toEqual(new WordsInfo('SomeTextInSneakCase'));
+        expect(someWords.replaceParts(diff2)).toEqual(new WordsInfo('awesome_text_in_pascal_case'));
+    });
+
 });
