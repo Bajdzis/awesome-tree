@@ -1,4 +1,4 @@
-import { splitStringWithSplitter } from '../utils/splitStringWithSplitter';
+import { splitStringWithSplitter } from '../../utils/splitStringWithSplitter/splitStringWithSplitter';
 import { WordsInfo } from '../WordsInfo/WordsInfo';
 
 
