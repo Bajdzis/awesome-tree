@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FileContent should generated correct nodes base on space number 1`] = `
+FileContentNode {
+  "body": Array [
+    FileContentNode {
+      "body": Array [],
+      "end": "",
+      "start": "
+",
+    },
+    FileContentNode {
+      "body": Array [
+        FileContentNode {
+          "body": Array [],
+          "end": "",
+          "start": "
+",
+        },
+        FileContentNode {
+          "body": Array [
+            FileContentNode {
+              "body": Array [],
+              "end": "",
+              "start": "        // TODO: implement
+",
+            },
+            FileContentNode {
+              "body": Array [],
+              "end": "",
+              "start": "        // TODO: this
+",
+            },
+            FileContentNode {
+              "body": Array [],
+              "end": "",
+              "start": "        // TODO: function
+",
+            },
+          ],
+          "end": "    }
+",
+          "start": "    doAwesomeStuff() {
+",
+        },
+        FileContentNode {
+          "body": Array [],
+          "end": "",
+          "start": "
+",
+        },
+        FileContentNode {
+          "body": Array [
+            FileContentNode {
+              "body": Array [],
+              "end": "",
+              "start": "        // TODO: implement!
+",
+            },
+            FileContentNode {
+              "body": Array [],
+              "end": "",
+              "start": "        return true;
+",
+            },
+          ],
+          "end": "    }
+",
+          "start": "    doOtherAwesomeStuff() {
+",
+        },
+        FileContentNode {
+          "body": Array [],
+          "end": "",
+          "start": "
+",
+        },
+      ],
+      "end": "}
+",
+      "start": "class Awesome {
+",
+    },
+    FileContentNode {
+      "body": Array [],
+      "end": "",
+      "start": "",
+    },
+  ],
+  "end": "",
+  "start": "",
+}
+`;
