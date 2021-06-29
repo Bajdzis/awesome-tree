@@ -6,7 +6,7 @@ type FunctionString = (string: string) => string;
 export class WordsInfo {
     private words: string;
     private parts: string[];
-    static CASE_METHODS = ['isPascalCase', 'isLowerCase', 'isCamelCase', 'isKebabCase', 'isSnakeCase', 'isUpperSnakeCase', 'isUpperKebabCase'] as const;
+    static CASE_METHODS = [ 'isCamelCase', 'isPascalCase', 'isLowerCase','isKebabCase', 'isSnakeCase', 'isUpperSnakeCase', 'isUpperKebabCase'] as const;
     static CASE_METHODS_TO_CASE_NAME = {
         'isPascalCase': 'pascalCase',
         'isLowerCase': 'lowerCase',

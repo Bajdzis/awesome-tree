@@ -33,7 +33,7 @@ describe('WordsInfo', () => {
 
     it('should single words matched to many text case', () => {
         expect(new WordsInfo('Word').getMatchedTextCases()).toEqual(['pascalCase']);
-        expect(new WordsInfo('word').getMatchedTextCases()).toEqual(['lowerCase', 'camelCase', 'kebabCase', 'snakeCase']);
+        expect(new WordsInfo('word').getMatchedTextCases()).toEqual(['camelCase', 'lowerCase', 'kebabCase', 'snakeCase']);
         expect(new WordsInfo('WORD').getMatchedTextCases()).toEqual(['upperSnakeCase', 'upperKebabCase']);
     });
 
