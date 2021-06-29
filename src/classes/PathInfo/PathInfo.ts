@@ -56,4 +56,17 @@ export class PathInfo {
         return paths.filter(path => this.isSimilar(path));
     }
 
+    includes(partPath: PathInfo) {
+        if(partPath.isFile() || partPath.getParts().length > this.getParts().length){
+            return false;
+        }
+        return partPath.getParts().every((part,index) => part.isSame(this.getParts()[index]));
+    }
+
+    includesSimilarly(partPath: PathInfo) {
+        if(partPath.isFile() || partPath.getParts().length > this.getParts().length){
+            return false;
+        }
+        return partPath.getParts().every((part,index) => part.isSimilarly(this.getParts()[index]));
+    }
 }

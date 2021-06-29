@@ -10,6 +10,10 @@ const paths = {
         unix: '/home/documents/some/',
         windows: 'C:\\home\\documents\\some\\'
     },
+    awesomeDirectoryInDocument: {
+        unix: '/home/documents/awesome/',
+        windows: 'C:\\home\\documents\\awesome\\'
+    },
     someFirst: {
         unix: '/home/documents/someFirst.ts',
         windows: 'C:\\home\\documents\\someFirst.ts'
@@ -102,6 +106,21 @@ describe('PathInfo', () => {
                 expect(result).not.toContain(someOtherSnakeCase);
             });
 
+            it('should check include parts in other path', () => {
+                const dir = new PathInfo(paths.someDirectoryInDocument[style]);
+                const fileInDir = new PathInfo(paths.someFileInDocument[style]);
+
+                expect(fileInDir.includes(dir)).toEqual(true);
+                expect(fileInDir.includesSimilarly(dir)).toEqual(true);
+            });
+
+            it('should check similarly include parts in other path', () => {
+                const dir = new PathInfo(paths.awesomeDirectoryInDocument[style]);
+                const fileInDir = new PathInfo(paths.someFileInDocument[style]);
+
+                expect(fileInDir.includesSimilarly(dir)).toEqual(true);
+                expect(fileInDir.includes(dir)).toEqual(false);
+            });
         });
 
     });

@@ -98,6 +98,10 @@ export class WordsInfo {
         return  WordsInfo.textCaseToFormatter[format](this.words);
     }
 
+    toString(){
+        return this.getWords();
+    }
+
     getParts() {
         return [...this.parts];
     }
