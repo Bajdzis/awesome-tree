@@ -4,6 +4,7 @@ import { CompareFiles } from './CompareFiles';
 describe('CompareFiles', () => {
 
     it('should merge all node when pass 0 %', () => {
+        const file = new FileContentNode('');
         const methodNode = new FileContentNode('doSomething () {', '}');
         const commentNode = new FileContentNode('// TODO');
         methodNode.addChildren(commentNode);
@@ -15,10 +16,11 @@ describe('CompareFiles', () => {
         comparer.addFile(methodNode);
         comparer.addFile(methodCalcNode);
 
-        expect(comparer.compare(0)).toEqual([methodNode.setChildren([commentNode, calcNode])]);
+        expect(comparer.compare(0)).toEqual(file.setChildren([methodNode.setChildren([commentNode, calcNode])]));
     });
 
     it('should merge only duplicate node when pass 100 %', () => {
+        const file = new FileContentNode('');
         const methodNode = new FileContentNode('doSomething () {', '}');
         const commentNode = new FileContentNode('// TODO');
         methodNode.addChildren(commentNode);
@@ -30,7 +32,7 @@ describe('CompareFiles', () => {
         comparer.addFile(methodNode);
         comparer.addFile(methodCalcNode);
 
-        expect(comparer.compare(1)).toEqual([methodNode.setChildren([])]);
+        expect(comparer.compare(1)).toEqual(file.setChildren([methodNode.setChildren([])]));
     });
 
     it('should return correct number of files', () => {

@@ -15,7 +15,8 @@ export class CompareFiles {
     }
 
     compare(percentFilter = 1) {
-        return this.compareNodes(this.files, percentFilter);
+        const file = new FileContentNode('');
+        return file.setChildren(this.compareNodes(this.files, percentFilter));
     }
 
     private compareNodes(nodes: FileContentNode[], percentFilter = 1): FileContentNode[] {

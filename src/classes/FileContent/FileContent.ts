@@ -53,8 +53,6 @@ export class FileContent {
             };
         });
 
-        console.log({countWhitespace});
-
         const children = this.nodeLine(countWhitespace);
 
         return file.setChildren(children);

@@ -48,8 +48,12 @@ export class PathInfo {
         return this.parts.every((part, index) => part.isSimilarly(partsToCompare[index]));
     }
 
+    isSimilar(instanceToCompare: PathInfo){
+        return this.isSimilarWords(instanceToCompare) && this.getExtension() === instanceToCompare.getExtension();
+    }
+
     getOnlySimilarPath(paths: PathInfo[]){
-        return paths.filter(path => this.isSimilarWords(path))
+        return paths.filter(path => this.isSimilar(path));
     }
 
 }
