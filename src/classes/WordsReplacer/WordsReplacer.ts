@@ -17,7 +17,7 @@ export class WordsReplacer {
         const words = this.destinationPath.getParts();
         const differentWords = this.basePath.getParts().reduce<{[key:string]: string}>((diff, part, index) => {
             const uniq = words.every(word => !word.isSame(part));
-            if(uniq) {
+            if(uniq && words[index]) {
                 const calculateDiff = part.getDiff(words[index]);
                 diff = {
                     ...diff,

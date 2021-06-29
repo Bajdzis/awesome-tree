@@ -1,4 +1,5 @@
-import { generateWorkspacePath, getWorkspaceFile, workspaceFile } from '../files/files';
+import { FileContentCreator } from '../../classes/FileContentCreator/FileContentCreator';
+import { generateWorkspacePath, getExpectContent, getExpectFile, getWorkspaceFile, workspaceFile } from '../files/files';
 
 describe('renameDirectory', () => {
 
@@ -6,7 +7,7 @@ describe('renameDirectory', () => {
         // TODO: done test
 
         const baseDirectory = generateWorkspacePath('site/footerComponent/');
-        // const destinationPath = generateWorkspacePath('site/awesomeComponent/');
+        const destinationPath = generateWorkspacePath('site/profileComponent/');
 
         const similarFiles = workspaceFile.filter(file => file.getPath().includes(baseDirectory));
 
@@ -15,9 +16,17 @@ describe('renameDirectory', () => {
             getWorkspaceFile('site/footerComponent/footer.scss'),
         ]);
 
-        // const newContent = new FileContentCreator(baseDirectory, file);
+        const files = similarFiles.map(file => {
 
-        // expect(newContent.create()).toEqual(getExpectContent('classes/replaceNameClass.js'));
+            const newContent = new FileContentCreator(destinationPath, file);
+
+            return newContent.createFile();
+        });
+
+        expect(files).toEqual([
+            getExpectFile('site/profileComponent/profile.html'),
+            getExpectFile('site/profileComponent/profile.scss'),
+        ]);
     });
 
 });

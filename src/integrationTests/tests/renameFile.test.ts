@@ -9,7 +9,7 @@ describe('renameFile', () => {
 
         const newContent = new FileContentCreator(path, file);
 
-        expect(newContent.create()).toEqual(getExpectContent('classes/replaceNameClass.js'));
+        expect(newContent.createContent()).toEqual(getExpectContent('classes/replaceNameClass.js'));
     });
 
 });

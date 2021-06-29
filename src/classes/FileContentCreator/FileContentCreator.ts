@@ -12,7 +12,17 @@ export class FileContentCreator {
         this.replacer = new WordsReplacer(destinationPath, content.getPath());
     }
 
-    create() {
+    createFile() {
+        return new FileContent(this.createPath(), this.createContent());
+    }
+
+    createPath() {
+        const parts = this.replacer.replaceInString(this.content.getPath().getPath());
+
+        return new PathInfo(parts);
+    }
+
+    createContent() {
         const splitContent = this.content.getContent().split(/([a-z][a-z_]*[a-z])/ig).filter(str => str.length);
         const splitContentWithWords = splitContent.map((part) => {
             if(part.match(/^([a-z][a-z_]*[a-z])$/i)){

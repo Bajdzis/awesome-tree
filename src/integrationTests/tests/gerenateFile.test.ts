@@ -16,7 +16,7 @@ describe('generateFile', () => {
 
         similarFiles.forEach(file => {
             const contentCreator = new FileContentCreator(generateFile, file);
-            const newFileContent = new FileContent(generateFile, contentCreator.create());
+            const newFileContent = new FileContent(generateFile, contentCreator.createContent());
 
             comparer.addFile(newFileContent.getFileGraph());
         });
@@ -35,7 +35,7 @@ describe('generateFile', () => {
 
         similarFiles.forEach(file => {
             const contentCreator = new FileContentCreator(generateFile, file);
-            const newFileContent = new FileContent(generateFile, contentCreator.create());
+            const newFileContent = new FileContent(generateFile, contentCreator.createContent());
 
             comparer.addFile(newFileContent.getFileGraph());
         });

@@ -7,7 +7,7 @@ export function generateWorkspacePath(path: string) {
     return new PathInfo(`/home/document/${path}`);
 }
 
-export function getContentWorkspaceFile(filePath: string, ) {
+export function getWorkspaceContent(filePath: string, ) {
     return fs.readFileSync( path.join(__dirname, 'base', filePath)).toString();
 }
 
@@ -16,7 +16,11 @@ export function getExpectContent(filePath: string, ) {
 }
 
 export function getWorkspaceFile(filePath: string) {
-    return new FileContent(generateWorkspacePath(filePath), getContentWorkspaceFile(filePath));
+    return new FileContent(generateWorkspacePath(filePath), getWorkspaceContent(filePath));
+}
+
+export function getExpectFile(filePath: string) {
+    return new FileContent(generateWorkspacePath(filePath), getExpectContent(filePath));
 }
 
 export const workspaceFile = [

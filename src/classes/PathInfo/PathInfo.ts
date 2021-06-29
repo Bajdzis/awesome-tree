@@ -32,6 +32,10 @@ export class PathInfo {
         return (/.([a-z]+)$/i).exec(this.path)?.[1];
     }
 
+    getPath() {
+        return this.path;
+    }
+
     getParts() {
         return [...this.parts];
     }
