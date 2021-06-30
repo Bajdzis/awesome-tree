@@ -5,7 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "test:coverage": "jest --coverage --coverageReporters=text-lcov | coveralls"
+    "test:coverage": "jest --coverage --coverageReporters=text-lcov",
+    "test:coveralls": "npm run test:coverage | coveralls"
+  },
+  "jest": {
+    "coveragePathIgnorePatterns": [
+      "/src/integrationTests/"
+    ]
   },
   "repository": {
     "type": "git",
