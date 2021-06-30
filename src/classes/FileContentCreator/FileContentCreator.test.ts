@@ -21,7 +21,7 @@ describe('FileContentCreator', () => {
         const fileContent = new FileContent(awesomeClass, content);
         const contentCreator = new FileContentCreator(otherClass, fileContent);
 
-        expect(contentCreator.createContent()).toEqual(contentOther);
+        expect(contentCreator.createContent()).toEqual(`${contentOther}\n`);
 
     });
 
@@ -42,7 +42,7 @@ describe('FileContentCreator', () => {
         const fileContent = new FileContent(awesomeClass, content);
         const contentCreator = new FileContentCreator(otherClass, fileContent);
 
-        expect(contentCreator.createContent()).toEqual(contentOther);
+        expect(contentCreator.createContent()).toEqual(`${contentOther}\n`);
 
     });
 

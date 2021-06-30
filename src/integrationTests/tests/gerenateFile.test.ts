@@ -1,4 +1,4 @@
-import { generateWorkspacePath, getExpectContent, workspaceFile } from '../files/files';
+import { generateWorkspacePath, getExpectContent, getWorkspaceFile, workspaceFile } from '../files/files';
 import { CompareFiles } from '../../classes/CompareFiles/CompareFiles';
 import { FileContentCreator } from '../../classes/FileContentCreator/FileContentCreator';
 import { FileContent } from '../../classes/FileContent/FileContent';
@@ -41,6 +41,32 @@ describe('generateFile', () => {
         });
 
         expect(comparer.compare(1).getContent()).toEqual(getExpectContent('classes/awesomeClass.js'));
+    });
+
+
+    it('generate by similar path html', () => {
+        const generateFile = generateWorkspacePath('site/awesomeComponent/awesome.html');
+
+        const similarFiles = workspaceFile.filter(file => generateFile.isSimilar(file.getPath()));
+
+        expect(similarFiles).toHaveLength(2);
+        expect(similarFiles).toEqual([
+            getWorkspaceFile('site/footerComponent/footer.html'),
+            getWorkspaceFile('site/headerComponent/header.html'),
+        ]);
+
+        const comparer = new CompareFiles();
+
+        similarFiles.forEach(file => {
+            const contentCreator = new FileContentCreator(generateFile, file);
+            const newFileContent = new FileContent(generateFile, contentCreator.createContent());
+            console.log({similarFile: newFileContent.getContent() });
+
+
+            comparer.addFile(newFileContent.getFileGraph());
+        });
+
+        expect(comparer.compare(1).getContent()).toEqual(getExpectContent('site/awesomeComponent/awesome.html'));
     });
 
 });

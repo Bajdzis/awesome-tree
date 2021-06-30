@@ -14,7 +14,11 @@ export class FileContent {
             throw new Error('[FileContent] Pass directory not file !');
         }
         this.path = path;
-        this.content = content;
+        if (content[content.length - 1] === '\n') {
+            this.content = content;
+        } else {
+            this.content = `${content}\n`;
+        }
     }
 
     getContent(){
@@ -65,42 +69,32 @@ export class FileContent {
         if (lines.length === 1 ) {
             return [new FileContentNode(lines[0].line)];
         }
-        const baseWhitespace = lines[0].whiteSpaces;
-        let lastIndexWithBaseSpace = 0;
-        let omitElementsFromEnd = 0;
+
         const result: FileContentNode[] = [];
+        let startIndex = 0;
 
-        for (let i = 1; i < lines.length; i++) {
-            const prevLine = lines[i-1];
-            const line = lines[i];
+        while (startIndex < lines.length) {
+            const startLine = lines[startIndex];
+            const baseWhitespace = startLine.whiteSpaces;
 
-
-            if(line.whiteSpaces === baseWhitespace) {
-                if(prevLine.whiteSpaces === line.whiteSpaces) {
-                    const node = new FileContentNode(prevLine.line);
-                    result.push(node);
-                    omitElementsFromEnd = 1;
-                } else {
-                    const start = lines[lastIndexWithBaseSpace];
-                    const node = new FileContentNode(start.line, line.line);
-                    const childrenNodes = this.nodeLine(lines.slice(lastIndexWithBaseSpace + 1, i));
-                    result.push(node.setChildren(childrenNodes));
-                    omitElementsFromEnd = 1;
-                    i++;
-                }
-                lastIndexWithBaseSpace = i;
-            } else {
-                omitElementsFromEnd++;
-            }
-        }
-
-        if(omitElementsFromEnd!==0) {
-            const omitLines = lines.slice(lines.length - omitElementsFromEnd, lines.length);
-            omitLines.forEach(line => {
-                result.push(new FileContentNode(line.line));
+            let endIndex = lines.findIndex((value,index, self) => {
+                const firstLineWithSameWhiteSpaces = index > startIndex + 1 && value.whiteSpaces === baseWhitespace;
+                const nextLineHaveSameWhiteSpaces = index === startIndex && self[index+1]?.whiteSpaces === baseWhitespace;
+                return nextLineHaveSameWhiteSpaces || firstLineWithSameWhiteSpaces;
             });
-        }
+            endIndex = endIndex === -1 ? lines.length - 1 : endIndex;
+            const endLine = lines[endIndex];
 
+            if (endIndex !== startIndex) {
+                const node = new FileContentNode(startLine.line, endLine.line);
+                const childrenLines = lines.slice(startIndex + 1, endIndex);
+                const childrenNodes = this.nodeLine(childrenLines);
+                result.push(node.setChildren(childrenNodes));
+            } else {
+                result.push(new FileContentNode(startLine.line));
+            }
+            startIndex = endIndex+1;
+        }
         return result;
     }
 
