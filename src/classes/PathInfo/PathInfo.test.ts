@@ -10,6 +10,10 @@ const paths = {
         unix: '/home/documents/some/',
         windows: 'C:\\home\\documents\\some\\'
     },
+    documentDirectory: {
+        unix: '/home/documents/',
+        windows: 'C:\\home\\documents\\'
+    },
     awesomeDirectoryInDocument: {
         unix: '/home/documents/awesome/',
         windows: 'C:\\home\\documents\\awesome\\'
@@ -41,6 +45,23 @@ describe('PathInfo', () => {
     (['unix', 'windows'] as const).map((style) => {
 
         describe(`${style} style`, () => {
+
+            it('should get parent path from file', () => {
+                const fileInfo = new PathInfo(paths.someFileInDocument[style]);
+                const parentDir = new PathInfo(paths.someDirectoryInDocument[style]);
+
+                expect(fileInfo.getParent()).toEqual(parentDir);
+                expect(fileInfo.getParent().isSimilar(parentDir)).toEqual(true);
+            });
+
+            it('should get parent path from directory', () => {
+                const dir = new PathInfo(paths.someDirectoryInDocument[style]);
+                const parentDir = new PathInfo(paths.documentDirectory[style]);
+
+                expect(dir.getParent()).toEqual(parentDir);
+                expect(dir.getParent().isSimilar(parentDir)).toEqual(true);
+            });
+
             it('should set file type', () => {
                 const wordsInfo = new PathInfo(paths.someFileInDocument[style]);
 

@@ -13,7 +13,7 @@ export class PathInfo {
         this.path = path;
         this.type = path.match(/[\\/]+$/i) ? 'directory': 'file';
         this.parts = splitStringWithSplitter(path,'\\/.')
-            .filter(part => part.match(/[a-z]+/i))
+            .filter(part => part.match(/([a-z]+([-|_]{1,1}[a-z]*)*)+/i))
             .map(part => new WordsInfo(part));
     }
 
@@ -30,6 +30,15 @@ export class PathInfo {
             return '/DIRECTORY/';
         }
         return (/.([a-z]+)$/i).exec(this.path)?.[1];
+    }
+
+    getParent() {
+        if (this.isFile()) {
+            const directory = this.path.replace(/[^\/\\]+$/, '');
+            return new PathInfo(directory);
+        }
+        const parentDirectory = this.path.replace(/[^\/\\]+(\/|\\)$/, '');
+        return new PathInfo(parentDirectory);
     }
 
     getPath() {

@@ -7,7 +7,7 @@ describe('generateDirectory', () => {
 
     it('generate base on footer', () => {
         const generateDirectory = generateWorkspacePath('site/awesomeComponent/');
-        const parentGenerateDirectory = generateWorkspacePath('site/');
+        const parentGenerateDirectory = generateDirectory.getParent();
 
         const similarFiles = workspaceFile.filter(file => file.getPath().includes(parentGenerateDirectory));
 
