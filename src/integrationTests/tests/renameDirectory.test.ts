@@ -4,8 +4,6 @@ import { generateWorkspacePath, getExpectFile, getWorkspaceFile, workspaceFile }
 describe('renameDirectory', () => {
 
     it('generate base on footer', () => {
-        // TODO: done test
-
         const baseDirectory = generateWorkspacePath('site/footerComponent/');
         const destinationPath = generateWorkspacePath('site/profileComponent/');
 
