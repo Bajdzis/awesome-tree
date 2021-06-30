@@ -7,7 +7,10 @@ export class Awesome extends HTMLElement {
         super();
         document.head.appendChild(styleForAwesome);
     }
+
+
     render() {
         return awesomeContent;
     }
+
 }

@@ -1,8 +1,8 @@
 
 export class FileContentNode {
-    private body:FileContentNode[];
-    private end:string;
-    private start:string;
+    protected body:FileContentNode[];
+    protected end:string;
+    protected start:string;
 
     constructor(start?:string, end?:string) {
         this.start = start || '';
@@ -12,6 +12,14 @@ export class FileContentNode {
 
     addChildren(children: FileContentNode){
         this.body.push(children);
+    }
+
+    getStart(){
+        return this.start;
+    }
+
+    getEnd(){
+        return this.end;
     }
 
     getChildren() {

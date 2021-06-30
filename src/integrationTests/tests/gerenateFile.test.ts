@@ -60,8 +60,6 @@ describe('generateFile', () => {
         similarFiles.forEach(file => {
             const contentCreator = new FileContentCreator(generateFile, file);
             const newFileContent = new FileContent(generateFile, contentCreator.createContent());
-            console.log({similarFile: newFileContent.getContent() });
-
 
             comparer.addFile(newFileContent.getFileGraph());
         });

@@ -1,13 +1,15 @@
 import { FileContentNode } from '../FileContentNode/FileContentNode';
+import { FileContentNodeSign } from '../FileContentNodeSign/FileContentNodeSign';
 
 export class CompareFiles {
-    private files: FileContentNode[];
+    private files: FileContentNodeSign[];
     constructor(){
         this.files = [];
     }
 
     addFile(file : FileContentNode) {
-        this.files.push(file);
+        const signNodes = FileContentNodeSign.signAllGraph(file, `File${ this.files.length }`);
+        this.files.push(signNodes);
     }
 
     getNumberOfFile(){
@@ -15,13 +17,13 @@ export class CompareFiles {
     }
 
     compare(percentFilter = 1) {
-        const file = new FileContentNode('');
-        return file.setChildren(this.compareNodes(this.files, percentFilter));
+        const file = new FileContentNode();
+        return file.setChildren(this.compareNodes(this.files, percentFilter).map(node => node.deleteSign()));
     }
 
-    private compareNodes(nodes: FileContentNode[], percentFilter = 1): FileContentNode[] {
+    private compareNodes(nodes: FileContentNodeSign[], percentFilter = 1): FileContentNodeSign[] {
 
-        const grouped: FileContentNode[][] = [];
+        const grouped: FileContentNodeSign[][] = [];
         nodes.forEach(node => {
             const indexToAdd = grouped.findIndex(group => group[0].isSame(node));
             if(indexToAdd === -1) {
@@ -34,13 +36,13 @@ export class CompareFiles {
         return this.attachChildren(grouped, nodes.length, percentFilter);
     }
 
-    private compareChildrenNodes(nodes: FileContentNode[][], percentFilter = 1): FileContentNode[] {
+    private compareChildrenNodes(nodes: FileContentNodeSign[][], percentFilter = 1): FileContentNodeSign[] {
 
-        const grouped: FileContentNode[][] = [];
+        const grouped: FileContentNodeSign[][] = [];
 
         nodes.forEach(children => {
             children.forEach(childrenNode => {
-                const indexToAdd = grouped.findIndex(group => group[0].isSame(childrenNode));
+                const indexToAdd = grouped.findIndex(group => group[0].isSame(childrenNode) && group.every(node => !node.isSameSign(childrenNode)));
                 if(indexToAdd === -1) {
                     grouped.push([childrenNode]);
                 } else {
@@ -52,7 +54,7 @@ export class CompareFiles {
         return this.attachChildren(grouped, nodes.length, percentFilter);
     }
 
-    private attachChildren(grouped: FileContentNode[][], numberOfAllChild:number, percentFilter= 1) {
+    private attachChildren(grouped: FileContentNodeSign[][], numberOfAllChild:number, percentFilter= 1) {
         return grouped.filter(groupedNodes => {
             const percent = groupedNodes.length / numberOfAllChild;
             return percentFilter <= percent;
