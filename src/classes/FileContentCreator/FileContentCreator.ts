@@ -17,20 +17,29 @@ export class FileContentCreator {
     }
 
     createPath() {
-        const parts = this.replacer.replaceInString(this.content.getPath().getPath());
+        const parts = this.replaceString(this.content.getPath().getPath());
 
         return new PathInfo(parts);
     }
 
     createContent() {
-        const splitContent = this.content.getContent().split(/([a-z][a-z_]*[a-z])/ig).filter(str => str.length);
+        return this.replaceString(this.content.getContent());
+    }
+
+    private replaceString(s0:string) {
+        const allWordsInAllCase = Array.from(s0.matchAll(/([a-z]+([-|_]{1,1}[a-z]*)*)/ig)).map(result => result?.[0]).filter(str => str.length);
+        const wordsSplitRegEx = new RegExp(`(${allWordsInAllCase.join('|')})`,'ig');
+        const splitContent = s0.split(wordsSplitRegEx).filter(str => str.length);
+
         const splitContentWithWords = splitContent.map((part) => {
-            if(part.match(/^([a-z][a-z_]*[a-z])$/i)){
+            if(allWordsInAllCase.includes(part)){
                 return this.replacer.replaceInString(part);
             }
+
             return part;
         });
 
         return splitContentWithWords.join('');
     }
+
 }

@@ -1,5 +1,5 @@
 import { FileContentCreator } from '../../classes/FileContentCreator/FileContentCreator';
-import { generateWorkspacePath, getExpectContent, getExpectFile, getWorkspaceFile, workspaceFile } from '../files/files';
+import { generateWorkspacePath, getExpectFile, getWorkspaceFile, workspaceFile } from '../files/files';
 
 describe('renameDirectory', () => {
 
@@ -17,7 +17,6 @@ describe('renameDirectory', () => {
         ]);
 
         const files = similarFiles.map(file => {
-
             const newContent = new FileContentCreator(destinationPath, file);
 
             return newContent.createFile();
