@@ -91,3 +91,32 @@ FileContentNode {
   "start": "",
 }
 `;
+
+exports[`FileContent should generated correct nodes invalid content 1`] = `
+FileContentNode {
+  "body": Array [
+    FileContentNode {
+      "body": Array [],
+      "end": "",
+      "start": "
+",
+    },
+    FileContentNode {
+      "body": Array [
+        FileContentNode {
+          "body": Array [],
+          "end": "        <div>
+",
+          "start": "    <div>
+",
+        },
+      ],
+      "end": "",
+      "start": "<div>
+",
+    },
+  ],
+  "end": "",
+  "start": "",
+}
+`;

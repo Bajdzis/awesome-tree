@@ -8,12 +8,15 @@ interface LineInfo {
 export class FileContent {
     private path: PathInfo;
     private content: string;
+    private lineBreakStyle: 'CRLF' | 'LF';
 
     constructor(path: PathInfo, content: string) {
         if(path.isDirectory()){
             throw new Error('[FileContent] Pass directory not file !');
         }
+        this.lineBreakStyle = content.indexOf('\r\n') === -1 ? 'LF': 'CRLF';
         this.path = path;
+        content = content.replace(/\r\n/g, '\n');
         if (content[content.length - 1] === '\n') {
             this.content = content;
         } else {
@@ -22,6 +25,9 @@ export class FileContent {
     }
 
     getContent(){
+        if (this.getLineBreakStyle() === 'CRLF') {
+            return this.content.replace(/\n/g, '\r\n');
+        }
         return this.content;
     }
 
@@ -31,6 +37,10 @@ export class FileContent {
 
     getExtension(){
         return this.path.getExtension();
+    }
+
+    getLineBreakStyle() {
+        return this.lineBreakStyle;
     }
 
     getFileGraph(): FileContentNode {
