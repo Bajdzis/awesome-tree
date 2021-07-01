@@ -1,5 +1,5 @@
-import { FileContentCreator } from '../../classes/FileContentCreator/FileContentCreator';
 import { generateWorkspacePath, getExpectFile, getWorkspaceFile, workspaceFile } from '../files/files';
+import { FileContentCreator } from '../../index';
 
 describe('renameDirectory', () => {
 

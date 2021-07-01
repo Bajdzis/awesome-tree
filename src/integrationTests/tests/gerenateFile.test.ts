@@ -1,7 +1,5 @@
 import { generateWorkspacePath, getExpectContent, getWorkspaceFile, workspaceFile } from '../files/files';
-import { CompareFiles } from '../../classes/CompareFiles/CompareFiles';
-import { FileContentCreator } from '../../classes/FileContentCreator/FileContentCreator';
-import { FileContent } from '../../classes/FileContent/FileContent';
+import { CompareFiles, FileContentCreator, FileContent } from '../../index';
 
 describe('generateFile', () => {
 

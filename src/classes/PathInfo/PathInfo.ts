@@ -34,10 +34,10 @@ export class PathInfo {
 
     getParent() {
         if (this.isFile()) {
-            const directory = this.path.replace(/[^\/\\]+$/, '');
+            const directory = this.path.replace(/[^/\\]+$/, '');
             return new PathInfo(directory);
         }
-        const parentDirectory = this.path.replace(/[^\/\\]+(\/|\\)$/, '');
+        const parentDirectory = this.path.replace(/[^/\\]+(\/|\\)$/, '');
         return new PathInfo(parentDirectory);
     }
 
