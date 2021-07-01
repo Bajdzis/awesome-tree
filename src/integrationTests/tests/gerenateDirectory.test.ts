@@ -42,29 +42,27 @@ describe('generateDirectory', () => {
             ]
         ]);
 
-        // TODO !
+        const createFiles = groupedFiles.map((files) => {
+            const newContent = new FileContentCreator(generateDirectory, files[1]);
 
-        // groupedFiles.map((files) => {
-        //     const newContent = new FileContentCreator(generateDirectory, files[1]);
+            const generateFilePath = newContent.createPath();
 
-        //     const generateFilePath = newContent.createPath();
+            const comparer = new CompareFiles();
 
-        //     const comparer = new CompareFiles();
+            files.forEach(file => {
+                const contentCreator = new FileContentCreator(generateFilePath, file);
+                const newFileContent = new FileContent(generateFilePath, contentCreator.createContent());
 
-        //     files.forEach(file => {
-        //         const contentCreator = new FileContentCreator(generateFilePath, file);
-        //         const newFileContent = new FileContent(generateFilePath, contentCreator.createContent());
+                comparer.addFile(newFileContent.getFileGraph());
+            });
 
-        //         comparer.addFile(newFileContent.getFileGraph());
-        //     });
+            return new FileContent(generateFilePath, comparer.compare(1).getContent());
+        });
 
-        //     return new FileContent(generateFilePath, comparer.compare(1).getContent());
-        // });
-
-        // expect(groupedFiles).toEqual([
-        //     getExpectFile('site/awesomeComponent/awesome.html'),
-        //     getExpectFile('site/awesomeComponent/awesome.scss')
-        // ]);
+        expect(createFiles).toEqual([
+            getExpectFile('site/awesomeComponent/awesome.html'),
+            getExpectFile('site/awesomeComponent/awesome.scss')
+        ]);
 
 
     });
