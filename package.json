@@ -1,6 +1,6 @@
 {
   "name": "awesome-tree-engine",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Engine for create, rename and compare file content",
   "main": "out/index.js",
   "types": "out/index.d.ts",
@@ -11,8 +11,8 @@
     "test:coverage": "jest --coverage --coverageReporters=text-lcov",
     "test:coveralls": "npm run test:coverage | coveralls",
     "build": "tsc",
-		"prerelease": "standard-version",
-		"release": "git push --follow-tags origin master"
+    "prerelease": "standard-version",
+    "release": "git push --follow-tags origin master"
   },
   "pre-commit": [
     "lint",

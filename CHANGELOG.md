@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.1](https://github.com/Bajdzis/awesome-tree/compare/v1.0.0...v1.0.1) (2021-07-01)
+
+
+### Bug Fixes
+
+* change target java script version ([2bc7072](https://github.com/Bajdzis/awesome-tree/commit/2bc70727d4a97e3a14dc10dc81f345e7ac4b98f8))
+
 ## 1.0.0 (2021-07-01)
 
 
