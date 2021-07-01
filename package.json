@@ -1,5 +1,5 @@
 {
-  "name": "awesome-tree",
+  "name": "awesome-tree-engine",
   "version": "1.0.0",
   "description": "Engine for create, rename and compare file content",
   "main": "out/index.js",
