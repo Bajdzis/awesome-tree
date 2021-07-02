@@ -41,6 +41,15 @@ export class PathInfo {
         return new PathInfo(parentDirectory);
     }
 
+    getName(){
+        const result = this.path.match( this.isFile() ?  /([^/\\]+)$/ : /([^/\\]+)[/\\]{1,1}$/);
+        if(result) {
+            return result[1];
+        }
+
+        return '';
+    }
+
     getPath() {
         return this.path;
     }

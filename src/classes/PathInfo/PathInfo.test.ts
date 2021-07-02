@@ -142,6 +142,23 @@ describe('PathInfo', () => {
                 expect(fileInDir.includesSimilarly(dir)).toEqual(true);
                 expect(fileInDir.includes(dir)).toEqual(false);
             });
+
+            it('should return file name', () => {
+                const fileTxt = new PathInfo(paths.someFileInDocument[style]);
+                const fileSnake = new PathInfo(paths.someOtherFileSnakeCase[style]);
+
+                expect(fileTxt.getName()).toEqual('file.txt');
+                expect(fileSnake.getName()).toEqual('some_other_file.ts');
+            });
+
+            it('should return directory name', () => {
+                const someDir = new PathInfo(paths.someDirectoryInDocument[style]);
+                const awesomeDir = new PathInfo(paths.awesomeDirectoryInDocument[style]);
+
+                expect(someDir.getName()).toEqual('some');
+                expect(awesomeDir.getName()).toEqual('awesome');
+            });
+
         });
 
     });
