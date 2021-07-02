@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0](https://github.com/Bajdzis/awesome-tree/compare/v2.0.0...v2.1.0) (2021-07-02)
+
+
+### Features
+
+* get name from path info ([57ddae6](https://github.com/Bajdzis/awesome-tree/commit/57ddae6063f684184c9447a46a5b84aa6ba6f8ac))
+
 ## [2.0.0](https://github.com/Bajdzis/awesome-tree/compare/v1.0.1...v2.0.0) (2021-07-02)
 
 
