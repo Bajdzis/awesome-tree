@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/Bajdzis/awesome-tree/compare/v1.0.1...v2.0.0) (2021-07-02)
+
+
+### ⚠ BREAKING CHANGES
+
+* rename class method getPath to getPathInfo
+
+### Features
+
+* add getLines to FileContent ([c59dab2](https://github.com/Bajdzis/awesome-tree/commit/c59dab2b9cde38a30c60f4d63ca33aa0b349288a))
+
 ### [1.0.1](https://github.com/Bajdzis/awesome-tree/compare/v1.0.0...v1.0.1) (2021-07-01)
 
 
