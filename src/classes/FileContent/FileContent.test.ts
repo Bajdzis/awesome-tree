@@ -78,6 +78,20 @@ describe('FileContent', () => {
         expect(resultCRLF.getContent()).toEqual(contentLF); // delete info about line style in nodes
         expect(resultLF.getContent()).toEqual(contentLF);
     });
+
+    it('should get lines for LF and CRLF' , () => {
+        const path = new PathInfo('/home/awesomeClass.ts');
+        const fileContentCRLF = new FileContent(path, contentCRLF);
+        const fileContentLF = new FileContent(path, contentLF);
+
+        const linesCRLF = fileContentCRLF.getLines();
+        const linesLF = fileContentLF.getLines();
+
+        expect(linesLF).toHaveLength(16);
+        expect(linesCRLF).toHaveLength(16);
+        expect(linesCRLF).toEqual(linesLF);
+    });
+
 });
 
 

@@ -7,7 +7,7 @@ describe('generateDirectory', () => {
         const generateDirectory = generateWorkspacePath('site/awesomeComponent/');
         const parentGenerateDirectory = generateDirectory.getParent();
 
-        const similarFiles = workspaceFile.filter(file => file.getPath().includes(parentGenerateDirectory));
+        const similarFiles = workspaceFile.filter(file => file.getPathInfo().includes(parentGenerateDirectory));
 
         expect(similarFiles).toEqual([
             getWorkspaceFile('site/footerComponent/footer.html'),
@@ -20,7 +20,7 @@ describe('generateDirectory', () => {
 
             for (let i = 0; i < arr.length; i++) {
                 const [element] = arr[i];
-                if(element.getPath().isSimilar(file.getPath())){
+                if(element.getPathInfo().isSimilar(file.getPathInfo())){
                     arr[i].push(file);
                     return arr;
                 }

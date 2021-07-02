@@ -6,7 +6,7 @@ describe('generateFile', () => {
     it('generate by similar path scss', () => {
         const generateFile = generateWorkspacePath('site/awesomeComponent/awesome.scss');
 
-        const similarFiles = workspaceFile.filter(file => generateFile.isSimilar(file.getPath()));
+        const similarFiles = workspaceFile.filter(file => generateFile.isSimilar(file.getPathInfo()));
 
         expect(similarFiles).toHaveLength(2);
 
@@ -25,7 +25,7 @@ describe('generateFile', () => {
     it('generate by similar path js', () => {
         const generateFile = generateWorkspacePath('classes/awesomeClass.js');
 
-        const similarFiles = workspaceFile.filter(file => generateFile.isSimilar(file.getPath()));
+        const similarFiles = workspaceFile.filter(file => generateFile.isSimilar(file.getPathInfo()));
 
         expect(similarFiles).toHaveLength(2);
 
@@ -45,7 +45,7 @@ describe('generateFile', () => {
     it('generate by similar path html', () => {
         const generateFile = generateWorkspacePath('site/awesomeComponent/awesome.html');
 
-        const similarFiles = workspaceFile.filter(file => generateFile.isSimilar(file.getPath()));
+        const similarFiles = workspaceFile.filter(file => generateFile.isSimilar(file.getPathInfo()));
 
         expect(similarFiles).toHaveLength(2);
         expect(similarFiles).toEqual([

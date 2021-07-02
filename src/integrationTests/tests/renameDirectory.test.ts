@@ -7,7 +7,7 @@ describe('renameDirectory', () => {
         const baseDirectory = generateWorkspacePath('site/footerComponent/');
         const destinationPath = generateWorkspacePath('site/profileComponent/');
 
-        const similarFiles = workspaceFile.filter(file => file.getPath().includes(baseDirectory));
+        const similarFiles = workspaceFile.filter(file => file.getPathInfo().includes(baseDirectory));
 
         expect(similarFiles).toEqual([
             getWorkspaceFile('site/footerComponent/footer.html'),

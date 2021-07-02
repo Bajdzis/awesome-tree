@@ -9,7 +9,7 @@ export class FileContentCreator {
 
     constructor(destinationPath: PathInfo, content : FileContent){
         this.content = content;
-        this.replacer = new WordsReplacer(destinationPath, content.getPath());
+        this.replacer = new WordsReplacer(destinationPath, content.getPathInfo());
     }
 
     createFile() {
@@ -17,7 +17,7 @@ export class FileContentCreator {
     }
 
     createPath() {
-        const parts = this.replaceString(this.content.getPath().getPath());
+        const parts = this.replaceString(this.content.getPathInfo().getPath());
 
         return new PathInfo(parts);
     }

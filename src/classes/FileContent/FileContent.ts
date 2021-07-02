@@ -31,7 +31,11 @@ export class FileContent {
         return this.content;
     }
 
-    getPath(){
+    getLines(){
+        return this.content.split('\n');
+    }
+
+    getPathInfo(){
         return this.path;
     }
 
