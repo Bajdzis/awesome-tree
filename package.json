@@ -11,8 +11,10 @@
     "test:coverage": "jest --coverage --coverageReporters=text-lcov",
     "test:coveralls": "npm run test:coverage | coveralls",
     "build": "tsc",
+    "prepare": "npm run build",
     "prerelease": "standard-version",
-    "release": "git push --follow-tags origin master"
+    "release": "git push --follow-tags origin master",
+    "postrelease": "npm publish"
   },
   "pre-commit": [
     "lint",
