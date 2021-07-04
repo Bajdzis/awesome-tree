@@ -15,8 +15,18 @@ export class FileContentNodeAnalyze extends FileContentNode {
         return this.paths[0] === toCompare.paths[0];
     }
 
+    getBasePath () {
+        return this.paths[0];
+    }
+
+    getPaths () {
+        return [...this.paths];
+    }
+
     addPath (path: PathInfo) {
-        this.paths.push(path);
+        if(!this.paths.includes(path)) {
+            this.paths.push(path);
+        }
     }
 
     setChildren(children: FileContentNodeAnalyze[]){

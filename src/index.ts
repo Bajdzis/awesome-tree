@@ -6,3 +6,4 @@ export { FileContentNodeSign } from './classes/FileContentNodeSign/FileContentNo
 export { PathInfo } from './classes/PathInfo/PathInfo';
 export { WordsInfo } from './classes/WordsInfo/WordsInfo';
 export { WordsReplacer } from './classes/WordsReplacer/WordsReplacer';
+export { AnalyzeFiles } from './classes/AnalyzeFiles/AnalyzeFiles';

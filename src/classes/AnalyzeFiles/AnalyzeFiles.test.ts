@@ -1,8 +1,6 @@
 import { FileContent } from '../FileContent/FileContent';
-import { FileContentNode } from '../FileContentNode/FileContentNode';
 import { PathInfo } from '../PathInfo/PathInfo';
 import { AnalyzeFiles } from './AnalyzeFiles';
-
 
 const someContent = 'line1\nline2\nline3';
 const invalidContent = 'line1\nline3';
@@ -27,8 +25,36 @@ describe('AnalyzeFiles', () => {
         analyzer.addFile(file3);
         analyzer.addFile(file4);
 
-        expect(analyzer.analyze()).toEqual({});
+        expect(analyzer.analyze()).toMatchSnapshot();
     });
 
+    it('should return analyze compare', () => {
+
+        const analyzer = new AnalyzeFiles();
+        analyzer.addFile(file1);
+        analyzer.addFile(file2);
+        analyzer.addFile(file3);
+        analyzer.addFile(file4);
+
+        const nodes = analyzer.analyze();
+        const lines = analyzer.getLines(nodes);
+
+        expect(lines.map(line => line.content).join('')).toEqual('line1\nline2\nline3\n');
+        expect(lines).toEqual([
+            {
+                content: 'line1\n',
+                paths: [path1, path2, path3, path4]
+            },
+            {
+                content: 'line2\n',
+                paths: [path1, path2, path4]
+            },
+            {
+                content: 'line3\n',
+                paths: [path1, path2, path3, path4]
+            },
+
+        ]);
+    });
 
 });

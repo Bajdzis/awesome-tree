@@ -1,7 +1,11 @@
 import { FileContent } from '../FileContent/FileContent';
-import { FileContentNode } from '../FileContentNode/FileContentNode';
 import { FileContentNodeAnalyze } from '../FileContentNodeAnalyze/FileContentNodeAnalyze';
+import { PathInfo } from '../PathInfo/PathInfo';
 
+interface AnalyzeLine {
+    content: string;
+    paths: PathInfo[]
+}
 export class AnalyzeFiles {
     private files: FileContentNodeAnalyze[];
     constructor(){
@@ -19,8 +23,34 @@ export class AnalyzeFiles {
     }
 
     analyze() {
-        const file = new FileContentNode();
-        return file.setChildren(this.analyzeNodes(this.files));
+        return this.analyzeNodes(this.files);
+    }
+
+    getLines(nodes: FileContentNodeAnalyze[]): AnalyzeLine[] {
+        const result: AnalyzeLine[] = [];
+
+        nodes.forEach(node => {
+            const start = node.getStart();
+            const end = node.getEnd();
+            if(start !== '') {
+                result.push({
+                    content: start,
+                    paths: node.getPaths()
+                });
+            }
+            result.push(
+                ...this.getLines(node.getChildren()),
+            );
+            if(end !== '') {
+                result.push({
+                    content: end,
+                    paths: node.getPaths()
+                });
+            }
+
+        });
+
+        return result;
     }
 
     private analyzeNodes(nodes: FileContentNodeAnalyze[]): FileContentNodeAnalyze[] {
@@ -58,10 +88,13 @@ export class AnalyzeFiles {
 
     private attachChildren(grouped: FileContentNodeAnalyze[][]) {
         return grouped.map(nodes => {
-            const [node] = nodes;
+            const [node, ...otherNodes] = nodes;
+
             const result = this.analyzeChildrenNodes(nodes.map(node => node.getChildren()));
             const newNode = node.setChildren(result);
-
+            otherNodes.map(otherFile => {
+                newNode.addPath(otherFile.getBasePath());
+            });
             return newNode;
         });
     }

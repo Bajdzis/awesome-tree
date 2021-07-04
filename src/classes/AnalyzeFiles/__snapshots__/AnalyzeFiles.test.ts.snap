@@ -1,0 +1,634 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AnalyzeFiles should return analyze compare 1`] = `
+Array [
+  FileContentNodeAnalyze {
+    "body": Array [
+      FileContentNodeAnalyze {
+        "body": Array [],
+        "end": "",
+        "paths": Array [
+          PathInfo {
+            "parts": Array [
+              WordsInfo {
+                "parts": Array [
+                  "home",
+                ],
+                "words": "home",
+              },
+              WordsInfo {
+                "parts": Array [
+                  "document",
+                ],
+                "words": "document",
+              },
+              WordsInfo {
+                "parts": Array [
+                  "file",
+                  "1",
+                ],
+                "words": "file1",
+              },
+              WordsInfo {
+                "parts": Array [
+                  "txt",
+                ],
+                "words": "txt",
+              },
+            ],
+            "path": "/home/document/file1.txt",
+            "type": "file",
+          },
+          PathInfo {
+            "parts": Array [
+              WordsInfo {
+                "parts": Array [
+                  "home",
+                ],
+                "words": "home",
+              },
+              WordsInfo {
+                "parts": Array [
+                  "document",
+                ],
+                "words": "document",
+              },
+              WordsInfo {
+                "parts": Array [
+                  "file",
+                  "2",
+                ],
+                "words": "file2",
+              },
+              WordsInfo {
+                "parts": Array [
+                  "txt",
+                ],
+                "words": "txt",
+              },
+            ],
+            "path": "/home/document/file2.txt",
+            "type": "file",
+          },
+          PathInfo {
+            "parts": Array [
+              WordsInfo {
+                "parts": Array [
+                  "home",
+                ],
+                "words": "home",
+              },
+              WordsInfo {
+                "parts": Array [
+                  "document",
+                ],
+                "words": "document",
+              },
+              WordsInfo {
+                "parts": Array [
+                  "file",
+                  "3",
+                ],
+                "words": "file3",
+              },
+              WordsInfo {
+                "parts": Array [
+                  "txt",
+                ],
+                "words": "txt",
+              },
+            ],
+            "path": "/home/document/file3.txt",
+            "type": "file",
+          },
+          PathInfo {
+            "parts": Array [
+              WordsInfo {
+                "parts": Array [
+                  "home",
+                ],
+                "words": "home",
+              },
+              WordsInfo {
+                "parts": Array [
+                  "document",
+                ],
+                "words": "document",
+              },
+              WordsInfo {
+                "parts": Array [
+                  "file",
+                  "4",
+                ],
+                "words": "file4",
+              },
+              WordsInfo {
+                "parts": Array [
+                  "txt",
+                ],
+                "words": "txt",
+              },
+            ],
+            "path": "/home/document/file4.txt",
+            "type": "file",
+          },
+        ],
+        "start": "line1
+",
+      },
+      FileContentNodeAnalyze {
+        "body": Array [],
+        "end": "",
+        "paths": Array [
+          PathInfo {
+            "parts": Array [
+              WordsInfo {
+                "parts": Array [
+                  "home",
+                ],
+                "words": "home",
+              },
+              WordsInfo {
+                "parts": Array [
+                  "document",
+                ],
+                "words": "document",
+              },
+              WordsInfo {
+                "parts": Array [
+                  "file",
+                  "1",
+                ],
+                "words": "file1",
+              },
+              WordsInfo {
+                "parts": Array [
+                  "txt",
+                ],
+                "words": "txt",
+              },
+            ],
+            "path": "/home/document/file1.txt",
+            "type": "file",
+          },
+          PathInfo {
+            "parts": Array [
+              WordsInfo {
+                "parts": Array [
+                  "home",
+                ],
+                "words": "home",
+              },
+              WordsInfo {
+                "parts": Array [
+                  "document",
+                ],
+                "words": "document",
+              },
+              WordsInfo {
+                "parts": Array [
+                  "file",
+                  "2",
+                ],
+                "words": "file2",
+              },
+              WordsInfo {
+                "parts": Array [
+                  "txt",
+                ],
+                "words": "txt",
+              },
+            ],
+            "path": "/home/document/file2.txt",
+            "type": "file",
+          },
+          PathInfo {
+            "parts": Array [
+              WordsInfo {
+                "parts": Array [
+                  "home",
+                ],
+                "words": "home",
+              },
+              WordsInfo {
+                "parts": Array [
+                  "document",
+                ],
+                "words": "document",
+              },
+              WordsInfo {
+                "parts": Array [
+                  "file",
+                  "4",
+                ],
+                "words": "file4",
+              },
+              WordsInfo {
+                "parts": Array [
+                  "txt",
+                ],
+                "words": "txt",
+              },
+            ],
+            "path": "/home/document/file4.txt",
+            "type": "file",
+          },
+        ],
+        "start": "line2
+",
+      },
+      FileContentNodeAnalyze {
+        "body": Array [],
+        "end": "",
+        "paths": Array [
+          PathInfo {
+            "parts": Array [
+              WordsInfo {
+                "parts": Array [
+                  "home",
+                ],
+                "words": "home",
+              },
+              WordsInfo {
+                "parts": Array [
+                  "document",
+                ],
+                "words": "document",
+              },
+              WordsInfo {
+                "parts": Array [
+                  "file",
+                  "1",
+                ],
+                "words": "file1",
+              },
+              WordsInfo {
+                "parts": Array [
+                  "txt",
+                ],
+                "words": "txt",
+              },
+            ],
+            "path": "/home/document/file1.txt",
+            "type": "file",
+          },
+          PathInfo {
+            "parts": Array [
+              WordsInfo {
+                "parts": Array [
+                  "home",
+                ],
+                "words": "home",
+              },
+              WordsInfo {
+                "parts": Array [
+                  "document",
+                ],
+                "words": "document",
+              },
+              WordsInfo {
+                "parts": Array [
+                  "file",
+                  "2",
+                ],
+                "words": "file2",
+              },
+              WordsInfo {
+                "parts": Array [
+                  "txt",
+                ],
+                "words": "txt",
+              },
+            ],
+            "path": "/home/document/file2.txt",
+            "type": "file",
+          },
+          PathInfo {
+            "parts": Array [
+              WordsInfo {
+                "parts": Array [
+                  "home",
+                ],
+                "words": "home",
+              },
+              WordsInfo {
+                "parts": Array [
+                  "document",
+                ],
+                "words": "document",
+              },
+              WordsInfo {
+                "parts": Array [
+                  "file",
+                  "3",
+                ],
+                "words": "file3",
+              },
+              WordsInfo {
+                "parts": Array [
+                  "txt",
+                ],
+                "words": "txt",
+              },
+            ],
+            "path": "/home/document/file3.txt",
+            "type": "file",
+          },
+          PathInfo {
+            "parts": Array [
+              WordsInfo {
+                "parts": Array [
+                  "home",
+                ],
+                "words": "home",
+              },
+              WordsInfo {
+                "parts": Array [
+                  "document",
+                ],
+                "words": "document",
+              },
+              WordsInfo {
+                "parts": Array [
+                  "file",
+                  "4",
+                ],
+                "words": "file4",
+              },
+              WordsInfo {
+                "parts": Array [
+                  "txt",
+                ],
+                "words": "txt",
+              },
+            ],
+            "path": "/home/document/file4.txt",
+            "type": "file",
+          },
+        ],
+        "start": "line3
+",
+      },
+      FileContentNodeAnalyze {
+        "body": Array [],
+        "end": "",
+        "paths": Array [
+          PathInfo {
+            "parts": Array [
+              WordsInfo {
+                "parts": Array [
+                  "home",
+                ],
+                "words": "home",
+              },
+              WordsInfo {
+                "parts": Array [
+                  "document",
+                ],
+                "words": "document",
+              },
+              WordsInfo {
+                "parts": Array [
+                  "file",
+                  "1",
+                ],
+                "words": "file1",
+              },
+              WordsInfo {
+                "parts": Array [
+                  "txt",
+                ],
+                "words": "txt",
+              },
+            ],
+            "path": "/home/document/file1.txt",
+            "type": "file",
+          },
+          PathInfo {
+            "parts": Array [
+              WordsInfo {
+                "parts": Array [
+                  "home",
+                ],
+                "words": "home",
+              },
+              WordsInfo {
+                "parts": Array [
+                  "document",
+                ],
+                "words": "document",
+              },
+              WordsInfo {
+                "parts": Array [
+                  "file",
+                  "2",
+                ],
+                "words": "file2",
+              },
+              WordsInfo {
+                "parts": Array [
+                  "txt",
+                ],
+                "words": "txt",
+              },
+            ],
+            "path": "/home/document/file2.txt",
+            "type": "file",
+          },
+          PathInfo {
+            "parts": Array [
+              WordsInfo {
+                "parts": Array [
+                  "home",
+                ],
+                "words": "home",
+              },
+              WordsInfo {
+                "parts": Array [
+                  "document",
+                ],
+                "words": "document",
+              },
+              WordsInfo {
+                "parts": Array [
+                  "file",
+                  "3",
+                ],
+                "words": "file3",
+              },
+              WordsInfo {
+                "parts": Array [
+                  "txt",
+                ],
+                "words": "txt",
+              },
+            ],
+            "path": "/home/document/file3.txt",
+            "type": "file",
+          },
+          PathInfo {
+            "parts": Array [
+              WordsInfo {
+                "parts": Array [
+                  "home",
+                ],
+                "words": "home",
+              },
+              WordsInfo {
+                "parts": Array [
+                  "document",
+                ],
+                "words": "document",
+              },
+              WordsInfo {
+                "parts": Array [
+                  "file",
+                  "4",
+                ],
+                "words": "file4",
+              },
+              WordsInfo {
+                "parts": Array [
+                  "txt",
+                ],
+                "words": "txt",
+              },
+            ],
+            "path": "/home/document/file4.txt",
+            "type": "file",
+          },
+        ],
+        "start": "",
+      },
+    ],
+    "end": "",
+    "paths": Array [
+      PathInfo {
+        "parts": Array [
+          WordsInfo {
+            "parts": Array [
+              "home",
+            ],
+            "words": "home",
+          },
+          WordsInfo {
+            "parts": Array [
+              "document",
+            ],
+            "words": "document",
+          },
+          WordsInfo {
+            "parts": Array [
+              "file",
+              "1",
+            ],
+            "words": "file1",
+          },
+          WordsInfo {
+            "parts": Array [
+              "txt",
+            ],
+            "words": "txt",
+          },
+        ],
+        "path": "/home/document/file1.txt",
+        "type": "file",
+      },
+      PathInfo {
+        "parts": Array [
+          WordsInfo {
+            "parts": Array [
+              "home",
+            ],
+            "words": "home",
+          },
+          WordsInfo {
+            "parts": Array [
+              "document",
+            ],
+            "words": "document",
+          },
+          WordsInfo {
+            "parts": Array [
+              "file",
+              "2",
+            ],
+            "words": "file2",
+          },
+          WordsInfo {
+            "parts": Array [
+              "txt",
+            ],
+            "words": "txt",
+          },
+        ],
+        "path": "/home/document/file2.txt",
+        "type": "file",
+      },
+      PathInfo {
+        "parts": Array [
+          WordsInfo {
+            "parts": Array [
+              "home",
+            ],
+            "words": "home",
+          },
+          WordsInfo {
+            "parts": Array [
+              "document",
+            ],
+            "words": "document",
+          },
+          WordsInfo {
+            "parts": Array [
+              "file",
+              "3",
+            ],
+            "words": "file3",
+          },
+          WordsInfo {
+            "parts": Array [
+              "txt",
+            ],
+            "words": "txt",
+          },
+        ],
+        "path": "/home/document/file3.txt",
+        "type": "file",
+      },
+      PathInfo {
+        "parts": Array [
+          WordsInfo {
+            "parts": Array [
+              "home",
+            ],
+            "words": "home",
+          },
+          WordsInfo {
+            "parts": Array [
+              "document",
+            ],
+            "words": "document",
+          },
+          WordsInfo {
+            "parts": Array [
+              "file",
+              "4",
+            ],
+            "words": "file4",
+          },
+          WordsInfo {
+            "parts": Array [
+              "txt",
+            ],
+            "words": "txt",
+          },
+        ],
+        "path": "/home/document/file4.txt",
+        "type": "file",
+      },
+    ],
+    "start": "",
+  },
+]
+`;
