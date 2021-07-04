@@ -30,4 +30,8 @@ export const workspaceFile = [
     getWorkspaceFile('site/footerComponent/footer.scss'),
     getWorkspaceFile('site/headerComponent/header.html'),
     getWorkspaceFile('site/headerComponent/header.scss'),
+    getWorkspaceFile('similar/abcFile.txt'),
+    getWorkspaceFile('similar/defFile.txt'),
+    getWorkspaceFile('similar/ghiFile.txt'),
+    getWorkspaceFile('similar/jklFile.txt'),
 ];
