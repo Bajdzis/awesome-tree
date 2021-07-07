@@ -13,6 +13,10 @@ export class WordsReplacer {
         this.differentWords = this.countDifferentWords();
     }
 
+    getDiffWords (){
+        return this.differentWords;
+    }
+
     countDifferentWords() {
         const words = this.destinationPath.getParts();
         const differentWords = this.basePath.getParts().reduce<{[key:string]: string}>((diff, part, index) => {

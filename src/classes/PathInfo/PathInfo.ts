@@ -12,7 +12,7 @@ export class PathInfo {
     constructor(path:string) {
         this.path = path;
         this.type = path.match(/[\\/]+$/i) ? 'directory': 'file';
-        this.parts = splitStringWithSplitter(path,'\\/.')
+        this.parts = splitStringWithSplitter(path,'\\/. ')
             .filter(part => part.match(/([a-z]+([-|_]{1,1}[a-z]*)*)+/i))
             .map(part => new WordsInfo(part));
     }
