@@ -6,15 +6,21 @@ import { WordsInfo } from '../WordsInfo/WordsInfo';
 export class PathInfo {
 
     private path: string;
-    private parts: WordsInfo[];
+    private parts: WordsInfo[][];
     private type: 'file' | 'directory';
 
     constructor(path:string) {
         this.path = path;
         this.type = path.match(/[\\/]+$/i) ? 'directory': 'file';
-        this.parts = splitStringWithSplitter(path,'\\/. ')
+        this.parts = splitStringWithSplitter(path,'\\/.')
             .filter(part => part.match(/([a-z]+([-|_]{1,1}[a-z]*)*)+/i))
-            .map(part => new WordsInfo(part));
+            .map(part => {
+
+                const {parts, isWord} = WordsInfo.splitByWord(part);
+
+                return parts.filter(isWord).map(word => new WordsInfo(word));
+
+            });
     }
 
     isFile() {
@@ -67,7 +73,10 @@ export class PathInfo {
             return false;
         }
         const partsToCompare = instanceToCompare.getParts();
-        return this.parts.every((part, index) => part.isSimilarly(partsToCompare[index]));
+        return this.parts.every((parts, index) => {
+            const partsToCompare2 = partsToCompare[index];
+            return parts.every((part,j) => part.isSimilarly(partsToCompare2[j]));
+        });
     }
 
     isSimilar(instanceToCompare: PathInfo){

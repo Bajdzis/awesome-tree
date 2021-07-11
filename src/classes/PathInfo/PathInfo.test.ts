@@ -38,6 +38,14 @@ const paths = {
         unix: '/home/documents/SomeOtherFile.ts',
         windows: 'C:\\home\\documents\\SomeOtherFile.ts'
     },
+    fileWithTwoWordsAndSameNumberOfWord: {
+        unix: '/one/two/three four.ts',
+        windows: 'C:\\one\\two\\three four.ts'
+    },
+    fileWithOneWordAndSameNumberOfWord: {
+        unix: '/one/two/three/four.ts',
+        windows: 'C:\\one\\two\\three\\four.ts'
+    },
 } as const;
 
 
@@ -108,6 +116,14 @@ describe('PathInfo', () => {
 
                 expect(someOther.isSimilarWords(someOtherPascalCase)).toEqual(false);
                 expect(someOther.isSimilarWords(someOtherSnakeCase)).toEqual(false);
+            });
+
+            it('should find not similar paths with same number of word', () => {
+                const fileWithTwoWords = new PathInfo(paths.fileWithTwoWordsAndSameNumberOfWord[style]);
+                const fileWithOneWord = new PathInfo(paths.fileWithOneWordAndSameNumberOfWord[style]);
+
+                expect(fileWithOneWord.isSimilarWords(fileWithTwoWords)).toEqual(false);
+                expect(fileWithTwoWords.isSimilarWords(fileWithOneWord)).toEqual(false);
             });
 
             it('should find all similar paths', () => {
