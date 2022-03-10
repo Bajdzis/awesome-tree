@@ -6,21 +6,36 @@ import { WordsInfo } from '../WordsInfo/WordsInfo';
 export class PathInfo {
 
     private path: string;
-    private parts: WordsInfo[][];
+    private parts: WordsInfo[];
+    private subParts: (WordsInfo|string)[][];
     private type: 'file' | 'directory';
 
     constructor(path:string) {
         this.path = path;
         this.type = path.match(/[\\/]+$/i) ? 'directory': 'file';
-        this.parts = splitStringWithSplitter(path,'\\/.')
-            .filter(part => part.match(/([a-z]+([-|_]{1,1}[a-z]*)*)+/i))
+        this.subParts = splitStringWithSplitter(path,'\\/.')
             .map(part => {
 
-                const {parts, isWord} = WordsInfo.splitByWord(part);
+                const {parts,isWord} = WordsInfo.splitByWord(part);
 
-                return parts.filter(isWord).map(word => new WordsInfo(word));
-
+                return parts.reduce<(WordsInfo|string)[]>((acc, part) => {
+                    if(isWord(part)) {
+                        acc.push(new WordsInfo(part));
+                    }else {
+                        acc.push(part);
+                    }
+                    return acc;
+                }, []);
             });
+
+        this.parts =this.subParts.reduce<(WordsInfo)[]>((acc, parts) => {
+            parts.forEach(part => {
+                if(part instanceof WordsInfo) {
+                    acc.push(part);
+                }
+            });
+            return acc;
+        }, []);
     }
 
     isFile() {
@@ -65,17 +80,15 @@ export class PathInfo {
     }
 
     isSameNumberOfParts(instanceToCompare: PathInfo){
-        return instanceToCompare.getParts().length === this.getParts().length;
+        return instanceToCompare.subParts.length === this.subParts.length;
     }
 
     isSimilarWords(instanceToCompare: PathInfo){
         if(!this.isSameNumberOfParts(instanceToCompare)) {
             return false;
         }
-        const partsToCompare = instanceToCompare.getParts();
         return this.parts.every((parts, index) => {
-            const partsToCompare2 = partsToCompare[index];
-            return parts.every((part,j) => part.isSimilarly(partsToCompare2[j]));
+            return parts.isSimilarly(instanceToCompare.getParts()[index]);
         });
     }
 
@@ -100,4 +113,15 @@ export class PathInfo {
         }
         return partPath.getParts().every((part,index) => part.isSimilarly(this.getParts()[index]));
     }
+
+    // delete subParts in snapshot testing
+    toJSON() {
+        return {
+            name: 'PathInfo',
+            path: this.path,
+            parts: this.parts,
+            type: this.type,
+        };
+    }
+
 }
