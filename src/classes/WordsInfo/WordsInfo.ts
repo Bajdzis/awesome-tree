@@ -170,4 +170,15 @@ export class WordsInfo {
             return this[functionName]() === true;
         }).map(functionName => WordsInfo.CASE_METHODS_TO_CASE_NAME[functionName]);
     }
+
+    static splitByWord(s0: string){
+        const allWordsInAllCase = Array.from(s0.matchAll(/([a-z]+([-|_]{1,1}[a-z]*)*)/ig)).map(result => result?.[0]).filter(str => str.length);
+        const wordsSplitRegEx = new RegExp(`(${allWordsInAllCase.join('|')})`,'ig');
+        const parts = s0.split(wordsSplitRegEx).filter(str => str.length);
+
+        return {
+            parts,
+            isWord: (s0:string) => allWordsInAllCase.includes(s0)
+        };
+    }
 }

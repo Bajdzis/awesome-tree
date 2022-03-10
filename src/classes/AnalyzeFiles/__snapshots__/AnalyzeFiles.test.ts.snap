@@ -8,7 +8,8 @@ Array [
         "body": Array [],
         "end": "",
         "paths": Array [
-          PathInfo {
+          Object {
+            "name": "PathInfo",
             "parts": Array [
               WordsInfo {
                 "parts": Array [
@@ -25,9 +26,8 @@ Array [
               WordsInfo {
                 "parts": Array [
                   "file",
-                  "1",
                 ],
-                "words": "file1",
+                "words": "file",
               },
               WordsInfo {
                 "parts": Array [
@@ -39,7 +39,8 @@ Array [
             "path": "/home/document/file1.txt",
             "type": "file",
           },
-          PathInfo {
+          Object {
+            "name": "PathInfo",
             "parts": Array [
               WordsInfo {
                 "parts": Array [
@@ -56,9 +57,8 @@ Array [
               WordsInfo {
                 "parts": Array [
                   "file",
-                  "2",
                 ],
-                "words": "file2",
+                "words": "file",
               },
               WordsInfo {
                 "parts": Array [
@@ -70,7 +70,8 @@ Array [
             "path": "/home/document/file2.txt",
             "type": "file",
           },
-          PathInfo {
+          Object {
+            "name": "PathInfo",
             "parts": Array [
               WordsInfo {
                 "parts": Array [
@@ -87,9 +88,8 @@ Array [
               WordsInfo {
                 "parts": Array [
                   "file",
-                  "3",
                 ],
-                "words": "file3",
+                "words": "file",
               },
               WordsInfo {
                 "parts": Array [
@@ -101,7 +101,8 @@ Array [
             "path": "/home/document/file3.txt",
             "type": "file",
           },
-          PathInfo {
+          Object {
+            "name": "PathInfo",
             "parts": Array [
               WordsInfo {
                 "parts": Array [
@@ -118,9 +119,8 @@ Array [
               WordsInfo {
                 "parts": Array [
                   "file",
-                  "4",
                 ],
-                "words": "file4",
+                "words": "file",
               },
               WordsInfo {
                 "parts": Array [
@@ -140,7 +140,8 @@ Array [
         "body": Array [],
         "end": "",
         "paths": Array [
-          PathInfo {
+          Object {
+            "name": "PathInfo",
             "parts": Array [
               WordsInfo {
                 "parts": Array [
@@ -157,9 +158,8 @@ Array [
               WordsInfo {
                 "parts": Array [
                   "file",
-                  "1",
                 ],
-                "words": "file1",
+                "words": "file",
               },
               WordsInfo {
                 "parts": Array [
@@ -171,7 +171,8 @@ Array [
             "path": "/home/document/file1.txt",
             "type": "file",
           },
-          PathInfo {
+          Object {
+            "name": "PathInfo",
             "parts": Array [
               WordsInfo {
                 "parts": Array [
@@ -188,9 +189,8 @@ Array [
               WordsInfo {
                 "parts": Array [
                   "file",
-                  "2",
                 ],
-                "words": "file2",
+                "words": "file",
               },
               WordsInfo {
                 "parts": Array [
@@ -202,7 +202,8 @@ Array [
             "path": "/home/document/file2.txt",
             "type": "file",
           },
-          PathInfo {
+          Object {
+            "name": "PathInfo",
             "parts": Array [
               WordsInfo {
                 "parts": Array [
@@ -219,9 +220,8 @@ Array [
               WordsInfo {
                 "parts": Array [
                   "file",
-                  "4",
                 ],
-                "words": "file4",
+                "words": "file",
               },
               WordsInfo {
                 "parts": Array [
@@ -241,7 +241,8 @@ Array [
         "body": Array [],
         "end": "",
         "paths": Array [
-          PathInfo {
+          Object {
+            "name": "PathInfo",
             "parts": Array [
               WordsInfo {
                 "parts": Array [
@@ -258,9 +259,8 @@ Array [
               WordsInfo {
                 "parts": Array [
                   "file",
-                  "1",
                 ],
-                "words": "file1",
+                "words": "file",
               },
               WordsInfo {
                 "parts": Array [
@@ -272,7 +272,8 @@ Array [
             "path": "/home/document/file1.txt",
             "type": "file",
           },
-          PathInfo {
+          Object {
+            "name": "PathInfo",
             "parts": Array [
               WordsInfo {
                 "parts": Array [
@@ -289,9 +290,8 @@ Array [
               WordsInfo {
                 "parts": Array [
                   "file",
-                  "2",
                 ],
-                "words": "file2",
+                "words": "file",
               },
               WordsInfo {
                 "parts": Array [
@@ -303,7 +303,8 @@ Array [
             "path": "/home/document/file2.txt",
             "type": "file",
           },
-          PathInfo {
+          Object {
+            "name": "PathInfo",
             "parts": Array [
               WordsInfo {
                 "parts": Array [
@@ -320,9 +321,8 @@ Array [
               WordsInfo {
                 "parts": Array [
                   "file",
-                  "3",
                 ],
-                "words": "file3",
+                "words": "file",
               },
               WordsInfo {
                 "parts": Array [
@@ -334,7 +334,8 @@ Array [
             "path": "/home/document/file3.txt",
             "type": "file",
           },
-          PathInfo {
+          Object {
+            "name": "PathInfo",
             "parts": Array [
               WordsInfo {
                 "parts": Array [
@@ -351,9 +352,8 @@ Array [
               WordsInfo {
                 "parts": Array [
                   "file",
-                  "4",
                 ],
-                "words": "file4",
+                "words": "file",
               },
               WordsInfo {
                 "parts": Array [
@@ -373,7 +373,8 @@ Array [
         "body": Array [],
         "end": "",
         "paths": Array [
-          PathInfo {
+          Object {
+            "name": "PathInfo",
             "parts": Array [
               WordsInfo {
                 "parts": Array [
@@ -390,9 +391,8 @@ Array [
               WordsInfo {
                 "parts": Array [
                   "file",
-                  "1",
                 ],
-                "words": "file1",
+                "words": "file",
               },
               WordsInfo {
                 "parts": Array [
@@ -404,7 +404,8 @@ Array [
             "path": "/home/document/file1.txt",
             "type": "file",
           },
-          PathInfo {
+          Object {
+            "name": "PathInfo",
             "parts": Array [
               WordsInfo {
                 "parts": Array [
@@ -421,9 +422,8 @@ Array [
               WordsInfo {
                 "parts": Array [
                   "file",
-                  "2",
                 ],
-                "words": "file2",
+                "words": "file",
               },
               WordsInfo {
                 "parts": Array [
@@ -435,7 +435,8 @@ Array [
             "path": "/home/document/file2.txt",
             "type": "file",
           },
-          PathInfo {
+          Object {
+            "name": "PathInfo",
             "parts": Array [
               WordsInfo {
                 "parts": Array [
@@ -452,9 +453,8 @@ Array [
               WordsInfo {
                 "parts": Array [
                   "file",
-                  "3",
                 ],
-                "words": "file3",
+                "words": "file",
               },
               WordsInfo {
                 "parts": Array [
@@ -466,7 +466,8 @@ Array [
             "path": "/home/document/file3.txt",
             "type": "file",
           },
-          PathInfo {
+          Object {
+            "name": "PathInfo",
             "parts": Array [
               WordsInfo {
                 "parts": Array [
@@ -483,9 +484,8 @@ Array [
               WordsInfo {
                 "parts": Array [
                   "file",
-                  "4",
                 ],
-                "words": "file4",
+                "words": "file",
               },
               WordsInfo {
                 "parts": Array [
@@ -503,7 +503,8 @@ Array [
     ],
     "end": "",
     "paths": Array [
-      PathInfo {
+      Object {
+        "name": "PathInfo",
         "parts": Array [
           WordsInfo {
             "parts": Array [
@@ -520,9 +521,8 @@ Array [
           WordsInfo {
             "parts": Array [
               "file",
-              "1",
             ],
-            "words": "file1",
+            "words": "file",
           },
           WordsInfo {
             "parts": Array [
@@ -534,7 +534,8 @@ Array [
         "path": "/home/document/file1.txt",
         "type": "file",
       },
-      PathInfo {
+      Object {
+        "name": "PathInfo",
         "parts": Array [
           WordsInfo {
             "parts": Array [
@@ -551,9 +552,8 @@ Array [
           WordsInfo {
             "parts": Array [
               "file",
-              "2",
             ],
-            "words": "file2",
+            "words": "file",
           },
           WordsInfo {
             "parts": Array [
@@ -565,7 +565,8 @@ Array [
         "path": "/home/document/file2.txt",
         "type": "file",
       },
-      PathInfo {
+      Object {
+        "name": "PathInfo",
         "parts": Array [
           WordsInfo {
             "parts": Array [
@@ -582,9 +583,8 @@ Array [
           WordsInfo {
             "parts": Array [
               "file",
-              "3",
             ],
-            "words": "file3",
+            "words": "file",
           },
           WordsInfo {
             "parts": Array [
@@ -596,7 +596,8 @@ Array [
         "path": "/home/document/file3.txt",
         "type": "file",
       },
-      PathInfo {
+      Object {
+        "name": "PathInfo",
         "parts": Array [
           WordsInfo {
             "parts": Array [
@@ -613,9 +614,8 @@ Array [
           WordsInfo {
             "parts": Array [
               "file",
-              "4",
             ],
-            "words": "file4",
+            "words": "file",
           },
           WordsInfo {
             "parts": Array [

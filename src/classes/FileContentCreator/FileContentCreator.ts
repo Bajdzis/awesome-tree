@@ -1,5 +1,6 @@
 import { FileContent } from '../FileContent/FileContent';
 import { PathInfo } from '../PathInfo/PathInfo';
+import { WordsInfo } from '../WordsInfo/WordsInfo';
 import { WordsReplacer } from '../WordsReplacer/WordsReplacer';
 
 
@@ -27,12 +28,10 @@ export class FileContentCreator {
     }
 
     private replaceString(s0:string) {
-        const allWordsInAllCase = Array.from(s0.matchAll(/([a-z]+([-|_]{1,1}[a-z]*)*)/ig)).map(result => result?.[0]).filter(str => str.length);
-        const wordsSplitRegEx = new RegExp(`(${allWordsInAllCase.join('|')})`,'ig');
-        const splitContent = s0.split(wordsSplitRegEx).filter(str => str.length);
+        const {parts, isWord} = WordsInfo.splitByWord(s0);
 
-        const splitContentWithWords = splitContent.map((part) => {
-            if(allWordsInAllCase.includes(part)){
+        const splitContentWithWords = parts.map((part) => {
+            if(isWord(part)){
                 return this.replacer.replaceInString(part);
             }
 
